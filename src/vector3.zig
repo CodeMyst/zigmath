@@ -6,7 +6,7 @@ pub const v3 = struct {
     y: f32,
     z: f32,
 
-    /// initializes a v2 with x and y
+    /// initializes a v3 with x, y and z
     pub fn init(x: f32, y: f32, z: f32) v3 {
         return v3 {
             .x = x,
@@ -72,7 +72,7 @@ pub const v3 = struct {
         return v3.init(v.x * s, v.y * s, v.z * s);
     }
 
-    /// sums the v2 with a scalar
+    /// sums the v3 with a scalar
     pub fn sums(v: v3, s: f32) v3 {
         return v3.init(v.x + s, v.y + s, v.z + s);
     }
