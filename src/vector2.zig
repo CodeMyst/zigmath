@@ -13,6 +13,24 @@ pub const v2 = struct {
         };
     }
 
+    /// returns the component from an index
+    pub fn at(v: v2, i: u16) f32 {
+        return switch (i) {
+            0 => v.x,
+            1 => v.y,
+            else => @panic("invalid index value provided when accessing a v2 index"),
+        };
+    }
+
+    /// sets the component from an index
+    pub fn set(v: *v2, i: u16, val: f32) void {
+        switch (i) {
+            0 => v.x = val,
+            1 => v.y = val,
+            else => @panic("invalid index value provided when accessing a v2 index"),
+        }
+    }
+
     /// returns the x and y of the v2 as a [2]f32 array.
     /// to be used to pass to other stuff like opengl.
     pub fn arr(v: v2) [2]f32 {
@@ -87,6 +105,8 @@ test "creating a v2" {
 
     testing.expect(x.x == 4);
     testing.expect(x.y == 8);
+    testing.expect(x.at(0) == 4);
+    testing.expect(x.at(1) == 8);
     testing.expect(x.arr()[0] == 4);
     testing.expect(x.arr()[1] == 8);
 }

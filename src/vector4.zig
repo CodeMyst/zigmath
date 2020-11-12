@@ -17,6 +17,28 @@ pub const v4 = struct {
         };
     }
 
+    /// returns the component from an index
+    pub fn at(v: v4, i: u16) f32 {
+        return switch (i) {
+            0 => v.x,
+            1 => v.y,
+            2 => v.z,
+            3 => v.w,
+            else => @panic("invalid index value provided when accessing a v4 index"),
+        };
+    }
+
+    /// sets the component from an index
+    pub fn set(v: *v4, i: u16, val: f32) void {
+        switch (i) {
+            0 => v.x = val,
+            1 => v.y = val,
+            2 => v.z = val,
+            3 => v.w = val,
+            else => @panic("invalid index value provided when accessing a v4 index"),
+        }
+    }
+
     /// returns the x, y, z and w of the v4 as a [4]f32 array.
     /// to be used to pass to other stuff like opengl.
     pub fn arr(v: v4) [4]f32 {
@@ -97,6 +119,10 @@ test "creating a v4" {
     testing.expect(x.y == 8);
     testing.expect(x.z == 2);
     testing.expect(x.w == 6);
+    testing.expect(x.at(0) == 4);
+    testing.expect(x.at(1) == 8);
+    testing.expect(x.at(2) == 2);
+    testing.expect(x.at(3) == 6);
     testing.expect(x.arr()[0] == 4);
     testing.expect(x.arr()[1] == 8);
     testing.expect(x.arr()[2] == 2);
