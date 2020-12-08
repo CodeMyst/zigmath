@@ -2,7 +2,7 @@ const Builder = @import("std").build.Builder;
 
 pub fn build(b: *Builder) void {
     const mode = b.standardReleaseOptions();
-    const lib = b.addStaticLibrary("zigmath", "src/main.zig");
+    const lib = b.addStaticLibrary("zigmath", "src/index.zig");
     lib.setBuildMode(mode);
     lib.install();
 
