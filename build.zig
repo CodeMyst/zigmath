@@ -18,9 +18,13 @@ pub fn build(b: *Builder) void {
     var m4_tests = b.addTest("src/matrix4.zig");
     m4_tests.setBuildMode(mode);
 
+    var helper_tests = b.addTest("src/helpers.zig");
+    helper_tests.setBuildMode(mode);
+
     const test_step = b.step("test", "Run library tests");
     test_step.dependOn(&v2_tests.step);
     test_step.dependOn(&v3_tests.step);
     test_step.dependOn(&v4_tests.step);
     test_step.dependOn(&m4_tests.step);
+    test_step.dependOn(&helper_tests.step);
 }
